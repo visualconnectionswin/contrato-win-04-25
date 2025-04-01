@@ -58,8 +58,11 @@ function getDisplaySpeed(speed) {
   if (speed === 210) return 200;
   if (speed === 310) return 300;
   if (speed === 360) return 350;
+  if (speed === 420) return 400;
   if (speed === 610) return 600;
+  if (speed === 620) return 600;
   if (speed === 1010) return 1000;
+  if (speed === 1020) return 1000;
   return speed;
 }
 
@@ -67,8 +70,11 @@ function getSelectSpeedText(speed) {
   if (speed === 210) return "200 Mbps PAGO ADELANTADO";
   if (speed === 310) return "300 Mbps PAGO ADELANTADO";
   if (speed === 360) return "350 Mbps Gamer";
+  if (speed === 420) return "400 Mbps CONDOMINIO";
   if (speed === 610) return "600 Mbps Gamer";
+  if (speed === 620) return "600 Mbps CONDOMINIO";
   if (speed === 1010) return "1000 Mbps Gamer";
+  if (speed === 1020) return "1000 Mbps CONDOMINIO";
   if (speed === 800) return "800 Mbps VERISURE";
   return speed + " Mbps";
 }
@@ -79,7 +85,7 @@ function updateFiberSpeeds() {
   const selectedLocation = locationSelect.value;
   let speeds = [];
   if (selectedLocation === "lima") {
-    speeds = [200, 210, 300, 310, 350, 360, 400, 550, 600, 610, 750, 800, 850, 1000, 1010];
+    speeds = [200, 210, 300, 310, 350, 360, 400, 420, 550, 600, 620, 610, 750, 800, 850, 1000, 1020, 1010];
   } else {
     speeds = [350, 360, 550, 610, 850, 1000, 1010];
   }
