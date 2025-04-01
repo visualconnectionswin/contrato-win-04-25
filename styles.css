@@ -1,0 +1,139 @@
+/* Estilos generales e inspiración Apple */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9fafb;
+}
+.contract-section {
+  margin: 1rem 0;
+}
+.bold-keyword {
+  font-weight: 600;
+  color: #1e40af;
+}
+/* Animación fade-in para el contrato */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* SIDEBAR IZQUIERDO (OPCIONES DE CONTRATO) */
+.sidebar {
+  width: 60px;
+  height: 100vh;
+  background-color: #5b5f63;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 0 5px 5px 0;
+  transition: width 0.15s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+}
+.sidebar:hover {
+  width: 300px;
+}
+.sidebar-collapsed-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.sidebar:hover .sidebar-collapsed-text {
+  display: none;
+}
+.sidebar-content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.sidebar:hover .sidebar-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar input,
+.sidebar select {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-top: 4px;
+}
+.sidebar label {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+}
+
+/* SIDEBAR DERECHO (PLANES FRECUENTES) */
+.right-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: #5b5f63;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 5px 0 0 5px;
+  transition: width 0.15s ease;
+  z-index: 50;
+}
+.right-sidebar:hover {
+  width: 340px;
+}
+.right-sidebar-collapsed-text {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%) rotate(90deg);
+  transform-origin: center;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.right-sidebar:hover .right-sidebar-collapsed-text {
+  display: none;
+}
+.right-sidebar-content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.right-sidebar:hover .right-sidebar-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* PANEL DEL CONTRATO */
+.contract-panel {
+  margin-left: 60px;
+  margin-right: 60px;
+  padding: 20px;
+  transition: margin 0.75s ease;
+}
+
+/* Estilos para el modal SVA */
+#svaModal {
+  z-index: 100;
+}
+/* Aseguramos que el texto de los botones SVA sea visible */
+.sva-category-btn {
+  color: #000 !important;
+}

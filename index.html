@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WIN Contrato Generator</title>
+    <!-- Enlazamos el CSS personalizado -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Tailwind y Moment desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
+  </head>
+  <body>
+    <!-- SIDEBAR IZQUIERDO: OPCIONES DE CONTRATO -->
+    <div class="sidebar">
+      <!-- Texto vertical cuando está contraído -->
+      <div class="sidebar-collapsed-text">OPCIONES DE CONTRATO</div>
+      <div class="sidebar-content">
+        <h1 class="text-lg font-semibold mb-4">Opciones de Contratación</h1>
+        <form id="contractForm" class="space-y-3 text-sm">
+          <!-- Ubicación -->
+          <div>
+            <label for="location">Ubicación</label>
+            <select id="location" class="w-full">
+              <option value="lima" selected>Lima</option>
+              <option value="provincia">Provincia</option>
+            </select>
+          </div>
+          <!-- Tipo de Documento -->
+          <div>
+            <label for="documentType">Tipo de Documento</label>
+            <select id="documentType" class="w-full">
+              <option value="dni" selected>DNI/CE/RUC 10</option>
+              <option value="ruc">RUC 20</option>
+            </select>
+          </div>
+          <!-- Plan de Instalación (solo para RUC 20) -->
+          <div id="installmentSection" class="hidden">
+            <label for="installmentOption">Pago de Instalación</label>
+            <select id="installmentOption" class="w-full">
+              <option value="1">1 cuota – S/ 60</option>
+              <option value="3">3 cuotas – S/ 120</option>
+            </select>
+          </div>
+          <!-- Tipo de Servicio -->
+          <div>
+            <label>Tipo de Servicio</label>
+            <div class="flex gap-2">
+              <label class="inline-flex items-center">
+                <input
+                  type="checkbox"
+                  name="serviceType"
+                  value="fibra"
+                  class="form-checkbox h-4 w-4 opacity-50 cursor-not-allowed"
+                  checked
+                  onclick="return false;"
+                />
+                <span class="ml-1">Fibra</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input
+                  type="checkbox"
+                  name="serviceType"
+                  value="sva"
+                  class="form-checkbox h-4 w-4 opacity-50 cursor-not-allowed"
+				  checked  />
+                <span class="ml-1">SVA</span>
+              </label>
+            </div>
+          </div>
+          <!-- Velocidad de Fibra (visible solo si se selecciona Fibra) -->
+          <div id="fiberSpeedSection" class="hidden">
+            <label for="fiberSpeed">Velocidad de Fibra (Mbps)</label>
+            <select id="fiberSpeed" class="w-full"></select>
+          </div>
+          <!-- Servicios de Valor Agregado (SVA) – Sidebar Mejorado -->
+          <div id="svaSection" class="hidden">
+            <label>Servicios de Valor Agregado (SVA)</label>
+            <div id="svaCategories" class="grid grid-cols-2 gap-2 mt-1">
+              <button type="button" class="sva-category-btn px-2 py-1 bg-gray-200 rounded" data-category="fono">
+                Fono
+              </button>
+              <button type="button" class="sva-category-btn px-2 py-1 bg-gray-200 rounded" data-category="mesh">
+                Mesh
+              </button>
+              <button type="button" class="sva-category-btn px-2 py-1 bg-gray-200 rounded" data-category="winbox">
+                Winbox
+              </button>
+              <button type="button" class="sva-category-btn px-2 py-1 bg-gray-200 rounded" data-category="wintv">
+                Wintv
+              </button>
+              <button type="button" class="sva-category-btn px-2 py-1 bg-gray-200 rounded" data-category="winGames">
+                Win Games
+              </button>
+              <button type="button" class="sva-category-btn px-2 py-1 bg-gray-200 rounded" data-category="dgo">
+                DGO
+              </button>
+            </div>
+            <!-- Aquí se mostrarán las opciones ya seleccionadas de SVA -->
+            <div id="selectedSvaDisplay" class="mt-2 text-sm text-gray-700"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- SIDEBAR DERECHO: PLANES FRECUENTES -->
+    <div class="right-sidebar">
+      <!-- Texto vertical cuando está contraído -->
+      <div class="right-sidebar-collapsed-text">PLANES FRECUENTES</div>
+      <div class="right-sidebar-content">
+        <h1 class="text-lg font-semibold mb-4">Ofertas más frecuentes</h1>
+        <div id="offerButtons" class="space-y-3 mt-4">
+          <button
+            type="button"
+            data-fiber="400"
+            data-sva='["mesh_400"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 400 + 1 Mesh
+          </button>
+          <button
+            type="button"
+            data-fiber="600"
+            data-sva='["mesh_600"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 600 + 2 Mesh
+          </button>
+          <button
+            type="button"
+            data-fiber="1000"
+            data-sva='["mesh_1000"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 1000 + 2 Mesh
+          </button>
+          <button
+            type="button"
+            data-fiber="350"
+            data-sva='["winbox_plan_hb_1","hb_wintv_l1_max_350"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 350 + Wintv L1 Max + Winbox en comodato
+          </button>
+          <button
+            type="button"
+            data-fiber="550"
+            data-sva='["hb_wintv_l1_max_550_wg","mesh_comodato_1","winbox_plan_hb_1"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 550 Wintv L1 Max Premium + Mesh comodato + Winbox comodato
+          </button>
+          <button
+            type="button"
+            data-fiber="750"
+            data-sva='["hb_wintv_l1_max_750_wg","mesh_comodato_1","winbox_plan_hb_1","win_games_hb"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 750 Wintv L1 Max Premium + Mesh comodato + Winbox comodato + Win Games
+          </button>
+          <button
+            type="button"
+            data-fiber="1000"
+            data-sva='["hb_wintv_l1_max_1000_wg","mesh_comodato_1","winbox_plan_hb_1","win_games_hb"]'
+            class="offer-button w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          >
+            Plan de 1000 Wintv L1 Max Premium + Mesh comodato + Winbox comodato + Win Games
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL DEL CONTRATO -->
+    <div class="contract-panel">
+      <div
+        id="contractOutput"
+        class="bg-white p-6 rounded-lg shadow-sm transition-all duration-500 ease-in-out fade-in"
+      >
+        <h2 class="text-2xl font-bold text-center mb-4">CONTRATO DE WIN</h2>
+        <!-- Bloque de resumen del plan -->
+        <div
+          id="planSummary"
+          class="text-center text-lg font-mono font-bold text-white bg-blue-500 p-2 rounded mb-4"
+        ></div>
+        <div id="contractContent" class="prose text-sm"></div>
+      </div>
+    </div>
+
+    <!-- Modal para selección de opciones SVA -->
+    <div
+      id="svaModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+    >
+      <div class="bg-white p-4 rounded shadow-lg max-w-md w-full">
+        <h2 id="svaModalTitle" class="text-lg font-bold mb-2"></h2>
+        <div id="svaModalOptions" class="space-y-2"></div>
+        <div class="mt-4 flex justify-end gap-2">
+          <button id="svaModalCancel" class="px-3 py-1 bg-gray-300 rounded">
+            Cancelar
+          </button>
+          <button id="svaModalSave" class="px-3 py-1 bg-blue-500 text-white rounded">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts: primero las constantes y luego la lógica -->
+    <script src="constants.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
