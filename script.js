@@ -59,10 +59,13 @@ function getDisplaySpeed(speed) {
   if (speed === 310) return 300;
   if (speed === 360) return 350;
   if (speed === 420) return 400;
+  if (speed === 421) return 400;
   if (speed === 610) return 600;
   if (speed === 620) return 600;
+  if (speed === 621) return 600;
   if (speed === 1010) return 1000;
   if (speed === 1020) return 1000;
+  if (speed === 1021) return 1000;
   return speed;
 }
 
@@ -71,10 +74,13 @@ function getSelectSpeedText(speed) {
   if (speed === 310) return "300 Mbps PAGO ADELANTADO";
   if (speed === 360) return "350 Mbps Gamer";
   if (speed === 420) return "400 Mbps CONDOMINIO";
+  if (speed === 421) return "400 Mbps CONDOMINIO EN ESTRENO";
   if (speed === 610) return "600 Mbps Gamer";
   if (speed === 620) return "600 Mbps CONDOMINIO";
+  if (speed === 621) return "600 Mbps CONDOMINIO EN ESTRENO";
   if (speed === 1010) return "1000 Mbps Gamer";
   if (speed === 1020) return "1000 Mbps CONDOMINIO";
+  if (speed === 1021) return "1000 Mbps CONDOMINIO EN ESTRENO";
   if (speed === 800) return "800 Mbps VERISURE";
   return speed + " Mbps";
 }
