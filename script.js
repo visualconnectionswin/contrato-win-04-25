@@ -91,7 +91,7 @@ function updateFiberSpeeds() {
   const selectedLocation = locationSelect.value;
   let speeds = [];
   if (selectedLocation === "lima") {
-    speeds = [200, 210, 300, 310, 350, 360, 400, 420, 550, 600, 620, 610, 750, 800, 1000, 1020, 1010];
+    speeds = [200, 210, 300, 310, 350, 360, 400, 420, 421, 550, 600, 620, 621, 610, 750, 800, 1000, 1020, 1021, 1010];
   } else {
     speeds = [350, 360, 420, 550, 610, 620, 1000, 1020, 1010];
   }
