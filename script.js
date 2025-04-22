@@ -57,6 +57,7 @@ function updateUbigeoDisplay() {
 function getDisplaySpeed(speed) {
   if (speed === 210) return 200;
   if (speed === 310) return 300;
+  if (speed === 320) return 300;
   if (speed === 360) return 350;
   if (speed === 420) return 400;
   if (speed === 421) return 400;
@@ -72,6 +73,7 @@ function getDisplaySpeed(speed) {
 function getSelectSpeedText(speed) {
   if (speed === 210) return "200 Mbps PAGO ADELANTADO";
   if (speed === 310) return "300 Mbps PAGO ADELANTADO";
+  if (speed === 320) return "300 Mbps CONDOMINIO";
   if (speed === 360) return "350 Mbps Gamer";
   if (speed === 420) return "400 Mbps CONDOMINIO";
   if (speed === 421) return "400 Mbps CONDOMINIO EN ESTRENO";
@@ -91,7 +93,7 @@ function updateFiberSpeeds() {
   const selectedLocation = locationSelect.value;
   let speeds = [];
   if (selectedLocation === "lima") {
-    speeds = [200, 210, 300, 310, 350, 360, 400, 420, 421, 550, 600, 620, 621, 610, 750, 800, 1000, 1020, 1021, 1010];
+    speeds = [200, 210, 300, 320, 310, 350, 360, 400, 420, 421, 550, 600, 620, 621, 610, 750, 800, 1000, 1020, 1021, 1010];
   } else {
     speeds = [350, 360, 420, 550, 610, 620, 1000, 1020, 1010];
   }
