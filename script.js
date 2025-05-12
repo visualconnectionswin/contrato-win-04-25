@@ -259,7 +259,7 @@ if (documentType === "ruc") {
   // se inserta el bloque de FONO inmediatamente después.
   let reconnectionSection = `
     <div class="contract-section">
-      <p>La tarifa de reconexión es de <strong class="bold-keyword">S/ 10.00</strong>, incluye I.G.V.</p>
+      <p>La tarifa de reconexión es de <strong class="bold-keyword">S/ 8.85</strong>, incluye I.G.V.</p>
   `;
   if (selectedServices.includes("sva") && selectedSvaOptions.fono.length > 0) {
     const option = selectedSvaOptions.fono[0];
@@ -336,7 +336,7 @@ if (documentType === "ruc") {
       <!-- Sección de Facturación y demás datos -->
       <div class="contract-section">
         <p>
-          La fecha de facturación es el <strong class="bold-keyword">12</strong> de cada mes, y la fecha de vencimiento es el <strong class="bold-keyword">28</strong> del mismo mes.
+          La fecha de facturación es el <strong class="bold-keyword">14</strong> de cada mes, y la fecha de vencimiento es el <strong class="bold-keyword">28</strong> del mismo mes.
         </p>
         <br>
         <p>
