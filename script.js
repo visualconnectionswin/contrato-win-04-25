@@ -4,9 +4,7 @@
 let selectedSvaOptions = {
   fono: [],
   mesh: [],
-  winbox: [],
   wintv: [],
-  winGames: [],
   dgo: []
 };
 
@@ -408,9 +406,7 @@ function resetSva() {
   selectedSvaOptions = {
     fono: [],
     mesh: [],
-    winbox: [],
     wintv: [],
-    winGames: [],
     dgo: []
   };
   updateSelectedSvaDisplay();
@@ -438,7 +434,6 @@ function openSvaModal(category) {
   modalOptions.innerHTML = optionsHtml;
   modal.setAttribute("data-category", category);
 
-  // Agregar lógica de exclusión mutua según las reglas definidas
   modalOptions.querySelectorAll(".sva-modal-option").forEach((input) => {
     input.addEventListener("change", function () {
       const value = this.value;
