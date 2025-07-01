@@ -4,7 +4,9 @@
 let selectedSvaOptions = {
   fono: [],
   mesh: [],
+  winbox: [],
   wintv: [],
+  winGames: [],
   dgo: []
 };
 
@@ -235,7 +237,7 @@ if (documentType === "ruc") {
   }
 }
 
-    
+
   let installationText = "";
   if (documentType === "ruc") {
     if (installmentOption === "1") {
@@ -257,83 +259,16 @@ if (documentType === "ruc") {
   // se inserta el bloque de FONO inmediatamente después.
   let reconnectionSection = `
     <div class="contract-section">
+      <p>La tarifa de reconexión es de <strong class="bold-keyword">S/ 10.00</strong>, incluye I.G.V.</p>
       <p>La tarifa de reconexión es de <strong class="bold-keyword">S/ 8.85</strong>, incluye I.G.V.</p>
   `;
   if (selectedServices.includes("sva") && selectedSvaOptions.fono.length > 0) {
     const option = selectedSvaOptions.fono[0];
-    if (option === "fono_10") {
-      reconnectionSection += `
-        <div class="mt-3">
-          <h3 class="font-bold text-base">FIJO</h3>
-          <p class="text-gray-900">
-            El servicio de telefonía fija VoIP postpago se brinda a través de la red de internet de WIN. Tu servicio incluye un equipo de telefonía analógico en comodato, llamadas ilimitadas dentro de la red de WIN y un paquete mensual de 100 minutos para llamar a todo operador a nivel nacional, no acumulable. El precio mensual del servicio es de <strong class="bold-keyword">S/ 10.00</strong>, incluye I.G.V.
-          </p>
-          <div class="mt-1 text-gray-500 text-xs">
-            <p>(En caso de portabilidad de otro operador)</p>
-            <p>Para fines de la portabilidad, se confirma lo siguiente:</p>
-            <ul class="list-disc ml-5">
-              <li>Concesionario Cedente (Empresa Operadora)</li>
-              <li>Número Telefónico Fijo a Portar</li>
-              <li>Modalidad de Pago con el Cedente (Postpago/Prepago)</li>
-            </ul>
-            <p>El trámite es gratuito, tiene un plazo de 24 horas desde la solicitud y se encuentra sujeto a condiciones técnicas de acuerdo al Artículo 5 del Reglamento de Portabilidad Numérica.</p>
-          </div>
-        </div>
-      `;
-    } else if (option === "fono_prov_hb") {
-      reconnectionSection += `
-        <div class="mt-3">
-          <h3 class="font-bold text-base">FIJO</h3>
-          <p class="text-gray-900">
-            El servicio de telefonía fija VoIP postpago se brinda a través de la red de internet de WIN. Incluye un equipo de telefonía analógico en comodato, llamadas ilimitadas dentro de la red de WIN y un paquete mensual de 100 minutos para llamar a todo operador a nivel nacional, no acumulable. El precio mensual del servicio es de <strong class="bold-keyword">S/ 10.00</strong> incluido I.G.V, pagarás a un precio promocional de <strong class="bold-keyword">S/ 1</strong>, incluye I.G.V. por los primeros <strong class="bold-keyword">06 meses</strong>.
-          </p>
-          <div class="mt-1 text-gray-500 text-xs">
-            <p>(En caso de portabilidad de otro operador)</p>
-            <p>Para fines de la portabilidad, se confirma lo siguiente:</p>
-            <ul class="list-disc ml-5">
-              <li>Concesionario Cedente (Empresa Operadora)</li>
-              <li>Número Telefónico Fijo a Portar</li>
-              <li>Modalidad de Pago con el Cedente (Postpago/Prepago)</li>
-            </ul>
-            <p>El trámite es gratuito, tiene un plazo de 24 horas desde la solicitud y se encuentra sujeto a condiciones técnicas de acuerdo al Artículo 5 del Reglamento de Portabilidad Numérica.</p>
-          </div>
-        </div>
-      `;
-    }
-  }
-  reconnectionSection += `</div>`;
-
-  let contractText = `
-    <div class="space-y-3 fade-in">
-      <p class="text-sm">
-        Hoy ${currentDate.format("DD")} de ${currentDate.format("MMMM")} del ${currentDate.format("YYYY")}, en la ciudad de LIMA, usted contrata con WIN, para ello me brinda los siguientes datos:
-      </p>
-      ${datosText}
-      
-      <!-- Sección FIBRA (si está seleccionada) -->
-      <div class="contract-section">
-        ${
-          selectedServices.includes("fibra")
-            ? `
-        <h3 class="font-bold text-base">FIBRA</h3>
-        <p>
-          El servicio de internet fijo postpago de WIN es ilimitado, 100% fibra óptica, con velocidad simétrica de <strong class="bold-keyword"><span style="font-size:1.2em;">${getDisplaySpeed(fiberSpeed)} Mbps</span></strong> de carga y descarga, con un mínimo garantizado de <strong class="bold-keyword"><span style="font-size:1.2em;">${plan.vm} Mbps</span></strong> de carga y descarga, incluye un equipo terminal router y conector en comodato, el cual deberá devolver en buenas condiciones; caso contrario, pagarás su valor. El contrato tendrá plazo indeterminado y podrá ser resuelto de acuerdo a la normativa de condiciones de uso.
-        </p>
-        <br>
-        <p>${pricingText}</p>
-        `
-            : ""
-        }
-      </div>
-      
-      ${documentType === "ruc" ? installationText : ""}
-      
-      <!-- Sección de TARIFA DE RECONEXIÓN (siempre mostrada) -->
-      ${reconnectionSection}
-      
+@@ -336,224 +336,224 @@
       <!-- Sección de Facturación y demás datos -->
       <div class="contract-section">
         <p>
+          La fecha de facturación es el <strong class="bold-keyword">12</strong> de cada mes, y la fecha de vencimiento es el <strong class="bold-keyword">28</strong> del mismo mes.
           La fecha de facturación es el <strong class="bold-keyword">14</strong> de cada mes, y la fecha de vencimiento es el <strong class="bold-keyword">28</strong> del mismo mes.
         </p>
         <br>
@@ -406,7 +341,9 @@ function resetSva() {
   selectedSvaOptions = {
     fono: [],
     mesh: [],
+    winbox: [],
     wintv: [],
+    winGames: [],
     dgo: []
   };
   updateSelectedSvaDisplay();
@@ -434,6 +371,7 @@ function openSvaModal(category) {
   modalOptions.innerHTML = optionsHtml;
   modal.setAttribute("data-category", category);
 
+  // Agregar lógica de exclusión mutua según las reglas definidas
   modalOptions.querySelectorAll(".sva-modal-option").forEach((input) => {
     input.addEventListener("change", function () {
       const value = this.value;
@@ -547,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll("#svaModalOptions .sva-modal-option:checked")
     ).map((input) => input.value);
     selectedSvaOptions[category] = checkedOptions;
-    updateSelectedSvaDisplay();
+    updateSelectedSvaDisplay();More actions
     updateContract();
     closeSvaModal();
   });
