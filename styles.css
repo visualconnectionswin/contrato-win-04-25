@@ -137,3 +137,11 @@ body {
 .sva-category-btn {
   color: #000 !important;
 }
+/* Estilos para la sección SPEECH */
+.speech-section {
+  background-color: #f0f9ff;
+  border-left: 4px solid #3b82f6;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.375rem;
+}
